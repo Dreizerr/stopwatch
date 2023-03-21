@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
     minutes = minutes < 10 ? `0${minutes}` : minutes;
     roundTimerScoreSeconds.textContent = seconds;
     roundTimerScoreMinutes.textContent = minutes;
-    roundCountTime++;
+    ++roundCountTime;
   }
 
   timeCount();

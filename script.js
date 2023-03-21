@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     roundCountTime = 0,
     stopwatchStarted = false,
     countInterval,
+    roundCountInterval,
     stashOrder = 1;
 
   playButton.addEventListener("click", playToggle);
@@ -28,10 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
     stopwatchStateToggler();
     if (stopwatch.classList.contains("active")) {
       replayButton.classList.remove("active");
-      countInterval = setInterval(() => {
-        timeCount();
-        roundTimeCount();
-      }, 1000);
+      countInterval = setInterval(timeCount, 1000);
+      roundCountInterval = setInterval(roundTimeCount, 1000);
     } else {
       replayButton.classList.add("active");
       clearInterval(countInterval);
@@ -89,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
       timeCount(0);
       roundTimeCount(0);
       clearInterval(countInterval);
+      clearInterval(roundCountInterval);
 
       const stashItems = document.querySelectorAll(".stopwatch-stash__item");
       stashItems.forEach((elem) => {
@@ -105,6 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
       timeCount(0);
       roundTimeCount(0);
       clearInterval(countInterval);
+      clearInterval(roundCountInterval);
 
       const stashItems = document.querySelectorAll(".stopwatch-stash__item");
       stashItems.forEach((elem) => {
@@ -132,6 +133,8 @@ document.addEventListener("DOMContentLoaded", function () {
       new StashItem(stopwatchStash, stashOrder, diff, currentTime, roundStart);
       roundBody.style.opacity = "1";
       stashOrder++;
+      clearInterval(roundCountInterval);
+      roundCountInterval = setInterval(roundTimeCount, 1000);
       roundTimeCount(0);
       roundStart = true;
     } else {

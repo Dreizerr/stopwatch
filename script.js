@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     roundTimerScoreSeconds = document.querySelector(".stopwatch__round-seconds"),
     roundBody = document.querySelector(".stopwatch__round-body");
 
-  let countTime = 3597,
+  let countTime = 0,
     roundCountTime = 0,
     stopwatchStarted = false,
     stashOrder = 1;

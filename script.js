@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function replayFunc(event) {
     if (replayButton.classList.contains("active")) {
-      // roundBody.style.opacity = "0";
+      roundBody.style.opacity = "0";
       timeCount(0);
       roundTimeCount(0);
       clearInterval(countInterval);
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       stashOrder = 1;
     } else if (event === false) {
-      // roundBody.style.opacity = "0";
+      roundBody.style.opacity = "0";
 
       timeCount(0);
       roundTimeCount(0);

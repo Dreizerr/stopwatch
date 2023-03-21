@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       replayButton.classList.add("active");
       clearInterval(countInterval);
+      clearInterval(roundCountInterval);
     }
     stopwatchStarted = true;
   }

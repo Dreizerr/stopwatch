@@ -202,7 +202,7 @@ body {
 
 .stopwatch__replay {
   filter: brightness(70%);
-  background: url(images/replay.png) center no-repeat, #333;
+  background: url(images/replay.svg) center no-repeat, #333;
 }
 .stopwatch__replay.active {
   filter: brightness(100%);

@@ -19,12 +19,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   playButton.addEventListener("click", playToggle);
 
-  let countInterval = setInterval(timeCount, 1000),
-    roundCountInterval = setInterval(roundTimeCount, 1000);
+  let countInterval = setInterval(timeCount, 1000);
+  // roundCountInterval = setInterval(roundTimeCount, 1000);
 
   clearInterval(countInterval);
 
-  clearInterval(roundCountInterval);
+  // clearInterval(roundCountInterval);
 
   function playToggle() {
     if (!stopwatchStarted) {
@@ -34,12 +34,15 @@ document.addEventListener("DOMContentLoaded", function () {
     stopwatchStateToggler();
     if (stopwatch.classList.contains("active")) {
       replayButton.classList.remove("active");
-      countInterval = setInterval(timeCount, 1000);
-      roundCountInterval = setInterval(roundTimeCount, 1000);
+      countInterval = setInterval(() => {
+        timeCount();
+        roundTimeCount();
+      }, 1000);
+      // roundCountInterval = setInterval(, 1000);
     } else {
       replayButton.classList.add("active");
       clearInterval(countInterval);
-      clearInterval(roundCountInterval);
+      // clearInterval(roundCountInterval);
     }
     stopwatchStarted = true;
   }
@@ -58,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   timeCount();
+  roundTimeCount();
 
   function ButtonsStateToggler() {
     playButton.classList.toggle("active");
@@ -74,7 +78,6 @@ document.addEventListener("DOMContentLoaded", function () {
       timeCount(0);
       roundTimeCount(0);
       clearInterval(countInterval);
-      clearInterval(roundCountInterval);
 
       replayButton.classList.remove("active");
       stopwatchStarted = false;

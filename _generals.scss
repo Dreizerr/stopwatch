@@ -1,10 +1,12 @@
-// @import "_adaptiveFontMixin";
+@import "_adaptiveFontMixin";
 @import "_adaptiveValue";
 @import "_variables";
 @import "_templates";
 
 body {
-  font-family: "Arial";
+  font-size: 17px;
+  font-family: "JetBrains Mono";
+
   color: white;
-  background-color: #223;
+  background-color: #212121;
 }

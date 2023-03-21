@@ -1,2 +1,114 @@
 @import "_nullstyle";
 @import "_generals";
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.stopwatch {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.stopwatch__body {
+  font-size: 80px;
+  display: flex;
+  gap: 10px;
+  align-self: center;
+}
+
+.stopwatch__round-body {
+  transition: ease 0.7s;
+  display: flex;
+  gap: 10px;
+  align-self: center;
+  font-size: 50px;
+  color: #504f4f;
+  opacity: 0;
+}
+
+.stopwatch-stash {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 135px;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
+
+.stopwatch-stash__item {
+  width: 100%;
+  background-color: #333;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border-radius: 11px;
+  animation: stash-item ease 0.5s;
+}
+
+@keyframes stash-item {
+  0% {
+    margin-bottom: -47px;
+    opacity: 0;
+    transform: translate(0, -100%);
+  }
+
+  100% {
+    margin: 0;
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+.stopwatch-stash__diff {
+  transform: translate(10px, 0px);
+  color: rgb(166, 166, 166);
+}
+// .stopwatch-stash__current-time {
+// }
+
+// .stopwatch-stash__order {
+// }
+
+.stopwatch__buttons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.stopwatch__button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.stopwatch__replay {
+  filter: brightness(70%);
+  background: url(images/replay.png) center no-repeat, #333;
+  &.active {
+    filter: brightness(100%);
+  }
+}
+.stopwatch__play {
+  background: url(images/play.svg) center no-repeat, #423cfe;
+  &.active {
+    background: url(images/pause.svg) center no-repeat, #423cfe;
+  }
+}
+.stopwatch__round {
+  filter: brightness(70%);
+  background: url(images/round.svg) center no-repeat, #333;
+  &.active {
+    filter: brightness(100%);
+  }
+}

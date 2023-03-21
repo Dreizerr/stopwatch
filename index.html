@@ -5,16 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <title>Timer</title>
+    <link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:regular,500,600,700,800" rel="stylesheet" />
+
+    <title>stopwatch</title>
   </head>
   <body>
-    <div class="timer">
-      <div class="timer-body">
-        <div class="timer-minutes">00</div>
-        :
-        <div class="timer-seconds">00</div>
+    <div class="wrapper">
+      <div class="stopwatch">
+        <div class="stopwatch__body">
+          <span class="stopwatch__minutes">00</span>
+          :
+          <span class="stopwatch__seconds">00</span>
+        </div>
+        <div class="stopwatch__round-body">
+          <span class="stopwatch__round-minutes">00</span>
+          :
+          <span class="stopwatch__round-seconds">00</span>
+        </div>
+        <div class="stopwatch__stash stopwatch-stash">
+          <!-- <div class="stopwatch-stash__item">
+            <div class="stopwatch-stash__order">01</div>
+            <div class="stopwatch-stash__diff">+00:00</div>
+            <div class="stopwatch-stash__current-time">00:00</div>
+          </div>
+          <div class="stopwatch-stash__item">
+            <div class="stopwatch-stash__order">02</div>
+            <div class="stopwatch-stash__diff">+00:00</div>
+            <div class="stopwatch-stash__current-time">00:00</div>
+          </div>
+          <div class="stopwatch-stash__item">
+            <div class="stopwatch-stash__order">02</div>
+            <div class="stopwatch-stash__diff">+00:00</div>
+            <div class="stopwatch-stash__current-time">00:00</div>
+          </div> -->
+        </div>
+        <div class="stopwatch__buttons">
+          <button class="stopwatch__button stopwatch__replay"></button>
+          <button class="stopwatch__button stopwatch__play"></button>
+          <button class="stopwatch__button stopwatch__round"></button>
+        </div>
       </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js" type="module"></script>
   </body>
 </html>

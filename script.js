@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
     stopwatchStateToggler();
     if (stopwatch.classList.contains("active")) {
       replayButton.classList.remove("active");
-      countInterval = setInterval(timeCount, 1000);
-      roundCountInterval = setInterval(roundTimeCount, 1000);
+      countInterval = setInterval(timeCountFunc, 1000);
+      roundCountInterval = setInterval(roundtimeCountFunc, 1000);
     } else {
       replayButton.classList.add("active");
       clearInterval(countInterval);
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     stopwatchStarted = true;
   }
 
-  function timeCount(clear) {
+  function timeCountFunc(clear) {
     if (clear === 0) {
       countTime = 0;
     }
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
     timerScoreSeconds.textContent = seconds;
     timerScoreMinutes.textContent = minutes;
 
-    if (minutes === 59 && seconds === 59) {
+    if (countTime === 3600) {
       replayFunc(false);
       countTime = 0;
       roundCountTime = 0;
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     countTime++;
   }
 
-  function roundTimeCount(clear) {
+  function roundtimeCountFunc(clear) {
     if (clear === 0) {
       roundCountTime = 0;
     }
@@ -72,11 +72,11 @@ document.addEventListener("DOMContentLoaded", function () {
     minutes = minutes < 10 ? `0${minutes}` : minutes;
     roundTimerScoreSeconds.textContent = seconds;
     roundTimerScoreMinutes.textContent = minutes;
-    ++roundCountTime;
+    roundCountTime++;
   }
 
-  timeCount();
-  roundTimeCount();
+  timeCountFunc();
+  roundtimeCountFunc();
 
   function ButtonsStateToggler() {
     playButton.classList.toggle("active");
@@ -86,8 +86,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function replayFunc(event) {
     if (replayButton.classList.contains("active")) {
       roundBody.style.opacity = "0";
-      timeCount(0);
-      roundTimeCount(0);
+      timeCountFunc(0);
+      roundtimeCountFunc(0);
       clearInterval(countInterval);
       clearInterval(roundCountInterval);
 
@@ -103,8 +103,8 @@ document.addEventListener("DOMContentLoaded", function () {
       stashOrder = 1;
     } else if (event === false) {
       roundBody.style.opacity = "0";
-      timeCount(0);
-      roundTimeCount(0);
+      timeCountFunc(0);
+      roundtimeCountFunc(0);
       clearInterval(countInterval);
       clearInterval(roundCountInterval);
 
@@ -135,8 +135,9 @@ document.addEventListener("DOMContentLoaded", function () {
       roundBody.style.opacity = "1";
       stashOrder++;
       clearInterval(roundCountInterval);
-      roundCountInterval = setInterval(roundTimeCount, 1000);
-      roundTimeCount(0);
+      roundCountInterval = setInterval(roundtimeCountFunc, 1000);
+      roundtimeCountFunc(0);
+
       roundStart = true;
     } else {
       event.preventDefault();
